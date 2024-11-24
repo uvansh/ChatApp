@@ -47,7 +47,7 @@ public class ChatApp {
             sendThread.join();
             receiveThread.join();
         } catch (InterruptedException e) {
-            System.out.println(e.getMessage());;
+            System.out.println(e.getMessage());
         }
     }
 
@@ -73,9 +73,7 @@ public class ChatApp {
         try {
             while (true) {
                 ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
-                records.forEach(record -> {
-                    System.out.println("Received: " + record.value());
-                });
+                records.forEach(record -> System.out.println("Received: " + record.value()));
             }
         } finally {
             consumer.close();
